@@ -26,7 +26,7 @@ function startProdMode(bot) {
     const URL = process.env.URL;
 
     bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
-    bot.startWebhook(`/bot${API_TOKEN}`, null, PORT)
+    bot.startWebhook(`/bot${API_TOKEN}`)
 }
 
 app.get('/notify', function (req, res) {
@@ -38,9 +38,9 @@ app.get('/notify', function (req, res) {
     //res.send(`Message sent to ${req.query.chatid}`);
 });
 
-const expressPort = 80;
-app.listen(expressPort, function () {
-    console.log(`Listening on port ${expressPort}!`);
+
+app.listen(PORT, function () {
+    console.log(`Listening on port ${PORT}!`);
 });
 
 bot.launch();
