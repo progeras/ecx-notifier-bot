@@ -4,10 +4,12 @@ const { telegram } = require('./telegram');
 const session = require('telegraf/session');
 const rp = require('request-promise');
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const bot = new Telegraf(process.env.TELEGRAM_TOKEN);
 bot.use(session());
@@ -33,7 +35,7 @@ function startProdMode(bot) {
 }
 
 app.post('/notify', function (req, res) {
-    telegram.sendMessage(req.query.chatid, req.query.message).then(() => {
+    telegram.sendMessage(req.body.chatid, req.body.message).then(() => {
         res.send(`Message sent to ${req.query.chatid}`);
     }).catch((err) => {
         res.send(err);
