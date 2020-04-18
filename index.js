@@ -29,7 +29,7 @@ function startProdMode(bot) {
     bot.startWebhook(`/bot${API_TOKEN}`)
 }
 
-app.get('/notify', function (req, res) {
+app.post('/notify', function (req, res) {
     telegram.sendMessage(req.query.chatid, req.query.message).then(() => {
         res.send(`Message sent to ${req.query.chatid}`);
     }).catch((err) => {
