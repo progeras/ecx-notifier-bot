@@ -38,7 +38,7 @@ app.get('/notify', function (req, res) {
     //res.send(`Message sent to ${req.query.chatid}`);
 });
 
-const expressPort = process.env.PORT || 80;
+const expressPort = 80;
 app.listen(expressPort, function () {
     console.log(`Listening on port ${expressPort}!`);
 });
