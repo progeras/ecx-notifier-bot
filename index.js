@@ -4,7 +4,10 @@ const { telegram } = require('./telegram');
 const session = require('telegraf/session');
 const rp = require('request-promise');
 const express = require('express');
+const cors = require('cors');
 const app = express();
+
+app.use(cors());
 
 const bot = new Telegraf(process.env.TELEGRAM_TOKEN);
 bot.use(session());
